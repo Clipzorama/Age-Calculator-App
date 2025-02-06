@@ -36,17 +36,18 @@ body {
 }
 
 .main-container {
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 10px 10px 50px 10px;
+    border-radius: 20px 20px 50px 20px;
     padding: 3rem;
 }
 
 .userdob {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .dob {
@@ -60,6 +61,7 @@ body {
     color: var(--Smokey-grey);
     font-size: 0.9rem;
     letter-spacing: 0.15rem;
+    margin-bottom: 10px;
 }
 
 
@@ -84,5 +86,27 @@ body {
 .field:focus {
     outline: 1px solid var(--Purple);
     caret-color: var(--Purple);
+}
+
+.line-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.line {
+    position: relative;
+    height: 2px;
+    background-color: var(--Light-grey);
+    width: 100%;
+}
+
+.arrow-container {
+    position: absolute;
+    background-color: var(--Purple);
+    border-radius: 50%;
+    padding: 1.5rem;
 }
 
