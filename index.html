@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js" defer></script>
+    <title>Age Calculator App</title>
+</head>
+<body>
+    <section class="main-container">
+        <!-- Top inputs -->
+        <div class="userdob">
+            <div class="dob">
+                <label class="title" for="day">DAY</label>
+                <input class="field" type="text" id="day" placeholder="DD">
+            </div>
+            <div class="dob">
+                <label class="title" for="month">MONTH</label>
+                <input class="field" type="text" id="month" placeholder="MM">
+            </div>
+            <div class="dob">
+                <label class="title" for="year">YEAR</label>
+                <input class="field" type="text" id="year" placeholder="YYYY">
+            </div>
+        </div>
+        <div class="line-container">
+            <div class="line"></div>
+            <div class="arrow-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2">
+                    <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg>
+            </div>
+        </div>
+        <div class="time-container">
+            <div class="time-item">
+              <span class="value" id="years-value">--</span>
+              <span class="label">years</span>
+            </div>
+            <div class="time-item">
+              <span class="value" id="months-value">--</span>
+              <span class="label">months</span>
+            </div>
+            <div class="time-item">
+              <span class="value" id="days-value">--</span>
+              <span class="label">days</span>
+            </div>
+          </div>          
+    </section>
+    
+</body>
+</html>
