@@ -111,5 +111,11 @@ body {
     border-radius: 50%;
     padding: 1.5rem;
     right: 1%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.arrow-container:hover {
+    background-color: var(--Off-black);
 }
 
