@@ -40,14 +40,14 @@ body {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 20px 20px 50px 20px;
+    border-radius: 30px 30px 250px 30px;
     padding: 3rem;
 }
 
 .userdob {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 .dob {
@@ -95,11 +95,12 @@ body {
     align-items: center;
     width: 100%;
     padding-right: 3.3rem;
+    margin-bottom: 3rem;
 }
 
 .line {
     position: relative;
-    height: 4px;
+    height: 2px;
     background-color: var(--Light-grey);
     width: 100%;
 
@@ -109,7 +110,7 @@ body {
     position: absolute;
     background-color: var(--Purple);
     border-radius: 50%;
-    padding: 1.5rem;
+    padding: 1.3rem 1.5rem;
     right: 1%;
     cursor: pointer;
     transition: 0.3s ease;
@@ -117,5 +118,23 @@ body {
 
 .arrow-container:hover {
     background-color: var(--Off-black);
+}
+
+.time-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-item {
+    font-size: 5.3rem;
+    font-weight: 800;
+}
+
+.label {
+    color: var(--Off-black);
+}
+
+.value {
+    color: var(--Purple);
 }
 
