@@ -37,73 +37,50 @@ arrowBtn.addEventListener("click", calcAge);
 
 function calcAge() {
 
-
     let dayInput = days.value;
     let monthInput = months.value;
     let yearInput = years.value;
 
     const birthDate = new Date(`${yearInput}-${monthInput}-${dayInput}`);
     const currentDate = new Date();
-    console.log(currentDate.getFullYear())
+
 
     // For all errors
-
+    resetErrors();
     const daysInMonth = getMonthsFromDays(yearInput, monthInput - 1);
-    if (days.value == "" && days.value == "" && days.value == "") {
-    days.classList.add("error");
-    months.classList.add("error");
-    years.classList.add("error");
-    inputTitle.forEach((element) => {
-        element.classList.add("error-color")
-    });
-    errorD.classList.remove("hidden");
-    errorM.classList.remove("hidden");
-    errorY.classList.remove("hidden");
-    return;
 
-    } else if (monthInput < 1 || monthInput > 12) {
-    errorD.classList.add("hidden");
-    errorY.classList.add("hidden");
-    days.classList.add("error");
-    months.classList.add("error");
-    years.classList.add("error");
-    inputTitle.forEach((element) => {
-        element.classList.add("error-color")
-    });
+     // Check if all fields are empty or invalid
+     if (!dayInput && !monthInput && !yearInput) {
+        showError("All fields are required", [errorD, errorM, errorY], [days, months, years]);
+        return;
+    }
 
-    errorM.textContent = "Must be a valid month"
-    errorM.classList.remove("hidden");
-    return;
-    } else if (dayInput < 0 || dayInput > daysInMonth) {
-    errorM.classList.add("hidden");
-    errorY.classList.add("hidden");
-    days.classList.add("error");
-    months.classList.add("error");
-    years.classList.add("error");
-    inputTitle.forEach((element) => {
-    element.classList.add("error-color")
-    });
+    if (monthInput < 1 || monthInput > 12 &&
+        dayInput < 1 || dayInput > daysInMonth &&
+        yearInput > currentDate.getFullYear()
+    ) {
+        showError("Must be a valid month", [errorM], [months]);
+        showError("Must be in the past", [errorY], [years]);
+        showError("Must be a valid day", [errorD], [days]);
+        return;
+    }
 
-    errorD.textContent = "Must be a valid day"
-    errorD.classList.remove("hidden");
-    return;
-    } else if (yearInput > currentDate.getFullYear()) {
-    errorM.classList.add("hidden");
-    errorD.classList.add("hidden");
-    days.classList.add("error");
-    months.classList.add("error");
-    years.classList.add("error");
-    inputTitle.forEach((element) => {
-    element.classList.add("error-color")
-    });
+    if (monthInput < 1 || monthInput > 12) {
+        showError("Must be a valid month", [errorM], [months, years, days]);
+        return;
+    }
 
-    errorY.textContent = "Must be in the past"
-    errorY.classList.remove("hidden");
-    return;
+    if (dayInput < 1 || dayInput > daysInMonth) {
+        showError("Must be a valid day", [errorD], [days, months, years]);
+        return;
+    }
+
+    if (yearInput > currentDate.getFullYear()) {
+        showError("Must be in the past", [errorY], [years, months, days]);
+        return;
     }
 
     /* ---------------------------------------- */
-
 
     let y = currentDate.getFullYear() - birthDate.getFullYear();
     let m = currentDate.getMonth() - birthDate.getMonth();
@@ -123,6 +100,28 @@ function calcAge() {
     calcMonth.textContent = m;
     calcDay.textContent = d;
 }
+
+
+function showError(message, errorElements, inputElements) {
+    inputElements.forEach(element => element.classList.add("error"));
+    inputTitle.forEach(element => element.classList.add("error-color"));
+    errorElements.forEach(errorElement => {
+        errorElement.classList.remove("hidden");
+        errorElement.textContent = message;
+    });
+    days.value = "";
+    months.value = "";
+    years.value = "";
+}
+
+// Function to reset error messages and input styles
+function resetErrors() {
+    [errorD, errorM, errorY].forEach(errorElement => errorElement.classList.add("hidden"));
+    [days, months, years].forEach(input => input.classList.remove("error"));
+    inputTitle.forEach(element => element.classList.remove("error-color"));
+}
+
+
 
 function getMonthsFromDays(year, month) {
     return new Date(year, month + 1, 0).getDate();
